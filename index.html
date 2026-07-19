@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>NebulaX — Premium Gaming Tools for Android, PC & iPhone</title>
+  <meta name="description" content="NebulaX is a premium gaming tools suite — zero-lag performance, precision input response, and adaptive sync across Android, PC, and iPhone. Power your game." />
+  <meta name="theme-color" content="#050310" />
+  <link rel="canonical" href="https://www.nebulax.example/" />
+
+  <!-- ---------- SEO: Open Graph / Twitter Card ---------- -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NebulaX" />
+  <meta property="og:title" content="NebulaX — Power Your Game." />
+  <meta property="og:description" content="Premium gaming tools for Android, PC & iPhone — zero-lag performance, precision response, adaptive sync." />
+  <meta property="og:url" content="https://www.nebulax.example/" />
+  <meta property="og:image" content="https://www.nebulax.example/assets/images/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NebulaX — Power Your Game." />
+  <meta name="twitter:description" content="Premium gaming tools for Android, PC & iPhone." />
+  <meta name="twitter:image" content="https://www.nebulax.example/assets/images/og-cover.jpg" />
+
+  <!-- ---------- Icons / manifest ---------- -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- ---------- Fonts: preconnect before the actual request, swap to
+       avoid invisible-text flash (FOIT) — see README §Typography ---------- -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- ---------- SEO: structured data (JSON-LD) ---------- -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NebulaX",
+    "applicationCategory": "Utility",
+    "operatingSystem": "Android, iOS, Windows",
+    "description": "Premium gaming tools suite delivering zero-lag performance, precision input response, and adaptive sync across Android, PC, and iPhone.",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "USD",
+      "lowPrice": "0"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "2400000"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- WCAG 2.2 SC 2.4.1 — Bypass Blocks -->
+  <a class="nx-skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ---------- Boot loader (removed from a11y tree once resolved) ---------- -->
+  <div id="nx-loader" class="nx-loader" role="status" aria-live="polite">
+    <div class="nx-loader__core" aria-hidden="true">
+      <div class="nx-loader__ring nx-loader__ring--outer"></div>
+      <div class="nx-loader__ring nx-loader__ring--mid"></div>
+      <div class="nx-loader__ring nx-loader__ring--inner"></div>
+    </div>
+    <p class="nx-loader__mark">NEBULAX</p>
+    <div class="nx-loader__bar" aria-hidden="true">
+      <span id="nx-loader-bar-fill" class="nx-loader__bar-fill"></span>
+    </div>
+    <p id="nx-loader-pct" class="nx-loader__pct">INITIALIZING CORE — 0%</p>
+  </div>
+
+  <!-- ---------- Ambient backdrop (decorative — hidden from a11y tree) ---------- -->
+  <canvas id="nx-particle-canvas" class="nx-backdrop-canvas" aria-hidden="true"></canvas>
+  <div class="nx-backdrop-glow" aria-hidden="true"></div>
+  <div class="nx-backdrop-grain" aria-hidden="true"></div>
+
+  <header id="nx-header" class="nx-navbar">
+    <div class="nx-navbar__inner">
+      <a href="#main-content" class="nx-navbar__logo">
+        <span class="nx-navbar__logo-mark" aria-hidden="true"></span>
+        NEBULAX
+      </a>
+      <nav class="nx-navbar__links" aria-label="Primary">
+        <a class="nx-navbar__link" href="#features">Features</a>
+        <a class="nx-navbar__link" href="#products">Products</a>
+        <a class="nx-navbar__link" href="#reviews">Reviews</a>
+        <a class="nx-navbar__link" href="#get">Get NebulaX</a>
+      </nav>
+      <a href="#get" class="nx-btn nx-btn--nav" data-magnetic>Get Started</a>
+    </div>
+  </header>
+
+  <!-- 1px sentinel the Navbar module observes to detect "scrolled past top" -->
+  <div id="nx-scroll-sentinel" aria-hidden="true" style="position:absolute; top:0; height:1px; width:1px;"></div>
+
+  <main id="main-content">
+    <section class="nx-hero" aria-labelledby="hero-heading">
+      <div class="nx-hero__grid">
+        <div>
+          <p class="nx-hero__eyebrow" style="--d:0.2s" data-intro>
+            <span class="nx-hero__eyebrow-dot" aria-hidden="true"></span>
+            Now live on Android · PC · iPhone
+          </p>
+          <h1 id="hero-heading" class="nx-hero__title" style="--d:0.35s" data-intro>
+            <span class="nx-hero__title-line">Power Your</span>
+            <span class="nx-hero__title-line">Game.</span>
+          </h1>
+          <p class="nx-hero__sub" style="--d:0.55s" data-intro>
+            Premium gaming tools engineered for precision, speed, and control —
+            built for the players who refuse to play average.
+          </p>
+          <div class="nx-hero__ctas" style="--d:0.75s" data-intro>
+            <a href="#products" class="nx-btn nx-btn--primary" data-magnetic>Explore the Arsenal</a>
+            <a href="#features" class="nx-btn nx-btn--ghost" data-magnetic>See it in motion</a>
+          </div>
+          <dl class="nx-hero__stats" style="--d:0.95s" data-intro>
+            <div>
+              <dt class="u-visually-hidden">Players equipped</dt>
+              <dd class="nx-hero__stat-value">2.4M+</dd>
+              <span class="nx-hero__stat-label">Players Equipped</span>
+            </div>
+            <div>
+              <dt class="u-visually-hidden">Input latency</dt>
+              <dd class="nx-hero__stat-value">0.3ms</dd>
+              <span class="nx-hero__stat-label">Input Latency</span>
+            </div>
+            <div>
+              <dt class="u-visually-hidden">Average rating</dt>
+              <dd class="nx-hero__stat-value">4.9★</dd>
+              <span class="nx-hero__stat-label">Average Rating</span>
+            </div>
+          </dl>
+        </div>
+
+        <div class="nx-stage" id="nx-stage" role="img" aria-label="Floating illustration of the three NebulaX products orbiting a glowing core">
+          <div class="nx-stage__orb" aria-hidden="true"></div>
+          <article class="nx-product-card nx-product-card--a" data-depth="30">
+            <div class="nx-product-card__glyph" aria-hidden="true"></div>
+            <h2 class="nx-product-card__title">NebulaX Core</h2>
+            <p class="nx-product-card__desc">PC Performance Engine</p>
+          </article>
+          <article class="nx-product-card nx-product-card--b" data-depth="50">
+            <div class="nx-product-card__glyph" aria-hidden="true"></div>
+            <h2 class="nx-product-card__title">NebulaX Pulse</h2>
+            <p class="nx-product-card__desc">Controller Response Kit</p>
+          </article>
+          <article class="nx-product-card nx-product-card--c" data-depth="20">
+            <div class="nx-product-card__glyph" aria-hidden="true"></div>
+            <h2 class="nx-product-card__title">NebulaX Vortex</h2>
+            <p class="nx-product-card__desc">Mobile Trigger System</p>
+          </article>
+        </div>
+      </div>
+      <div class="nx-scroll-cue" aria-hidden="true">
+        <span>SCROLL</span>
+        <div class="nx-scroll-cue__stick"></div>
+      </div>
+    </section>
+
+    <section class="nx-section" id="features" aria-labelledby="features-heading">
+      <div class="nx-section-head" data-reveal>
+        <span class="nx-section-head__tag">// Capabilities</span>
+        <h2 id="features-heading" class="nx-section-head__title">Engineered for the edge you can feel</h2>
+        <p class="nx-section-head__desc">Every tool in the NebulaX line is tuned at the millisecond level, so the only variable left in the match is skill.</p>
+      </div>
+      <div class="nx-feature-grid">
+        <article class="nx-feature-card" data-reveal data-tilt tabindex="0">
+          <div class="nx-feature-card__icon" aria-hidden="true">⚡</div>
+          <h3 class="nx-feature-card__title">Zero-Lag Core</h3>
+          <p class="nx-feature-card__desc">A background performance layer that reclaims system resources in real time, keeping frame times consistent under load.</p>
+        </article>
+        <article class="nx-feature-card" data-reveal data-tilt tabindex="0">
+          <div class="nx-feature-card__icon" aria-hidden="true">🎯</div>
+          <h3 class="nx-feature-card__title">Precision Response</h3>
+          <p class="nx-feature-card__desc">Sub-millisecond input mapping tuned per title, so every flick and tap lands exactly where you meant it to.</p>
+        </article>
+        <article class="nx-feature-card" data-reveal data-tilt tabindex="0">
+          <div class="nx-feature-card__icon" aria-hidden="true">🛰️</div>
+          <h3 class="nx-feature-card__title">Adaptive Sync</h3>
+          <p class="nx-feature-card__desc">Settings and profiles follow you across Android, PC, and iPhone — one identity, tuned everywhere you play.</p>
+        </article>
+        <article class="nx-feature-card" data-reveal data-tilt tabindex="0">
+          <div class="nx-feature-card__icon" aria-hidden="true">🔒</div>
+          <h3 class="nx-feature-card__title">Silent Shield</h3>
+          <p class="nx-feature-card__desc">Lightweight anti-interference protection that runs quietly in the background, never touching your frame rate.</p>
+        </article>
+        <article class="nx-feature-card" data-reveal data-tilt tabindex="0">
+          <div class="nx-feature-card__icon" aria-hidden="true">🌐</div>
+          <h3 class="nx-feature-card__title">Network Priority</h3>
+          <p class="nx-feature-card__desc">Intelligent packet prioritization keeps your game traffic ahead of everything else fighting for bandwidth.</p>
+        </article>
+        <article class="nx-feature-card" data-reveal data-tilt tabindex="0">
+          <div class="nx-feature-card__icon" aria-hidden="true">🧬</div>
+          <h3 class="nx-feature-card__title">Living Profiles</h3>
+          <p class="nx-feature-card__desc">NebulaX learns how you play and quietly refines its tuning session after session, without you touching a setting.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="nx-section" id="products" aria-labelledby="products-heading">
+      <div class="nx-section-head" data-reveal>
+        <span class="nx-section-head__tag">// The Arsenal</span>
+        <h2 id="products-heading" class="nx-section-head__title">One system. Three platforms.</h2>
+        <p class="nx-section-head__desc">Built natively for the hardware you already own — no compromises between platforms, no missing features.</p>
+      </div>
+      <div class="nx-showcase-list">
+        <article class="nx-showcase-row" data-reveal>
+          <div class="nx-showcase-row__info">
+            <span class="nx-showcase-row__platform">◈ PC</span>
+            <h3 class="nx-showcase-row__title">NebulaX Core</h3>
+            <p class="nx-showcase-row__desc">A performance engine that sits beneath your games, reallocating CPU and GPU headroom the instant a match begins.</p>
+            <div class="nx-showcase-row__specs">
+              <div><span class="nx-showcase-row__spec-value">0.3ms</span><span class="nx-showcase-row__spec-label">Input Delay</span></div>
+              <div><span class="nx-showcase-row__spec-value">+18%</span><span class="nx-showcase-row__spec-label">Avg. FPS Gain</span></div>
+            </div>
+            <a href="#get" class="nx-showcase-row__link">Get NebulaX Core <span class="nx-showcase-row__link-arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="nx-showcase-row__visual">
+            <div class="nx-showcase-row__orb" aria-hidden="true"><div class="nx-showcase-row__core"></div></div>
+          </div>
+        </article>
+
+        <article class="nx-showcase-row nx-showcase-row--reverse" data-reveal>
+          <div class="nx-showcase-row__info">
+            <span class="nx-showcase-row__platform">◈ Android</span>
+            <h3 class="nx-showcase-row__title">NebulaX Vortex</h3>
+            <p class="nx-showcase-row__desc">Virtual trigger mapping and touch-response tuning that turns any Android device into a precision instrument.</p>
+            <div class="nx-showcase-row__specs">
+              <div><span class="nx-showcase-row__spec-value">240Hz</span><span class="nx-showcase-row__spec-label">Touch Sampling</span></div>
+              <div><span class="nx-showcase-row__spec-value">6</span><span class="nx-showcase-row__spec-label">Custom Triggers</span></div>
+            </div>
+            <a href="#get" class="nx-showcase-row__link">Get NebulaX Vortex <span class="nx-showcase-row__link-arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="nx-showcase-row__visual">
+            <div class="nx-showcase-row__orb" aria-hidden="true"><div class="nx-showcase-row__core"></div></div>
+          </div>
+        </article>
+
+        <article class="nx-showcase-row" data-reveal>
+          <div class="nx-showcase-row__info">
+            <span class="nx-showcase-row__platform">◈ iPhone</span>
+            <h3 class="nx-showcase-row__title">NebulaX Pulse</h3>
+            <p class="nx-showcase-row__desc">Haptic-tuned response profiles for iPhone, calibrated frame-by-frame against the titles you actually play.</p>
+            <div class="nx-showcase-row__specs">
+              <div><span class="nx-showcase-row__spec-value">12+</span><span class="nx-showcase-row__spec-label">Game Profiles</span></div>
+              <div><span class="nx-showcase-row__spec-value">99.9%</span><span class="nx-showcase-row__spec-label">Uptime</span></div>
+            </div>
+            <a href="#get" class="nx-showcase-row__link">Get NebulaX Pulse <span class="nx-showcase-row__link-arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="nx-showcase-row__visual">
+            <div class="nx-showcase-row__orb" aria-hidden="true"><div class="nx-showcase-row__core"></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="nx-section" id="reviews" aria-labelledby="reviews-heading">
+      <div class="nx-section-head" data-reveal>
+        <span class="nx-section-head__tag">// From the Community</span>
+        <h2 id="reviews-heading" class="nx-section-head__title">Players don't go back</h2>
+        <p class="nx-section-head__desc">Real words from real players who made the switch.</p>
+      </div>
+      <ul class="nx-bubble-field" id="nx-review-field">
+        <li class="nx-bubble">
+          <div class="nx-bubble__stars" aria-hidden="true">★★★★★</div>
+          <div class="nx-bubble__who">
+            <div class="nx-bubble__avatar" aria-hidden="true"></div>
+            <div><p class="nx-bubble__name">Kael R.</p><p class="nx-bubble__role">Ranked PC Player</p></div>
+          </div>
+          <p class="nx-bubble__quote">My frame times stopped spiking mid-fight. It's the calmest my PC has ever felt under load.</p>
+        </li>
+        <li class="nx-bubble">
+          <div class="nx-bubble__stars" aria-hidden="true">★★★★★</div>
+          <div class="nx-bubble__who">
+            <div class="nx-bubble__avatar" aria-hidden="true"></div>
+            <div><p class="nx-bubble__name">Mira T.</p><p class="nx-bubble__role">Mobile Esports</p></div>
+          </div>
+          <p class="nx-bubble__quote">Vortex made my thumbs feel like they finally caught up to my brain.</p>
+        </li>
+        <li class="nx-bubble">
+          <div class="nx-bubble__stars" aria-hidden="true">★★★★★</div>
+          <div class="nx-bubble__who">
+            <div class="nx-bubble__avatar" aria-hidden="true"></div>
+            <div><p class="nx-bubble__name">Dev O.</p><p class="nx-bubble__role">Streamer</p></div>
+          </div>
+          <p class="nx-bubble__quote">Set it up once, forgot it existed — frame drops just stopped happening.</p>
+        </li>
+        <li class="nx-bubble">
+          <div class="nx-bubble__stars" aria-hidden="true">★★★★★</div>
+          <div class="nx-bubble__who">
+            <div class="nx-bubble__avatar" aria-hidden="true"></div>
+            <div><p class="nx-bubble__name">Sana P.</p><p class="nx-bubble__role">iPhone Gamer</p></div>
+          </div>
+          <p class="nx-bubble__quote">Pulse's haptics feel tuned to the exact game I'm playing. Small thing, huge difference.</p>
+        </li>
+        <li class="nx-bubble">
+          <div class="nx-bubble__stars" aria-hidden="true">★★★★★</div>
+          <div class="nx-bubble__who">
+            <div class="nx-bubble__avatar" aria-hidden="true"></div>
+            <div><p class="nx-bubble__name">Theo K.</p><p class="nx-bubble__role">Competitive Duo</p></div>
+          </div>
+          <p class="nx-bubble__quote">The network priority feature alone won us three overtime rounds this month.</p>
+        </li>
+        <li class="nx-bubble">
+          <div class="nx-bubble__stars" aria-hidden="true">★★★★★</div>
+          <div class="nx-bubble__who">
+            <div class="nx-bubble__avatar" aria-hidden="true"></div>
+            <div><p class="nx-bubble__name">Yuna S.</p><p class="nx-bubble__role">Casual → Ranked</p></div>
+          </div>
+          <p class="nx-bubble__quote">I didn't expect a tool like this to actually change how I play. It did.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="nx-section" id="get" aria-labelledby="cta-heading">
+      <div class="nx-cta" data-reveal>
+        <h2 id="cta-heading" class="nx-cta__title">Your game is waiting.</h2>
+        <p class="nx-cta__desc">Join millions of players already running on NebulaX.</p>
+        <a href="#" class="nx-btn nx-btn--primary" data-magnetic>Power Your Game — Free</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="nx-footer">
+    <div class="nx-footer__grid">
+      <div>
+        <h2 class="nx-footer__heading">NebulaX</h2>
+        <a class="nx-footer__link" href="#features">Features</a>
+        <a class="nx-footer__link" href="#products">Products</a>
+        <a class="nx-footer__link" href="#reviews">Reviews</a>
+      </div>
+      <div>
+        <h2 class="nx-footer__heading">Platforms</h2>
+        <a class="nx-footer__link" href="#">Android</a>
+        <a class="nx-footer__link" href="#">PC</a>
+        <a class="nx-footer__link" href="#">iPhone</a>
+      </div>
+      <div>
+        <h2 class="nx-footer__heading">Company</h2>
+        <a class="nx-footer__link" href="#">About</a>
+        <a class="nx-footer__link" href="#">Support</a>
+        <a class="nx-footer__link" href="#">Contact</a>
+      </div>
+      <div>
+        <h2 class="nx-footer__heading">Legal</h2>
+        <a class="nx-footer__link" href="#">Privacy</a>
+        <a class="nx-footer__link" href="#">Terms</a>
+      </div>
+    </div>
+    <div class="nx-footer__bottom">
+      <span>© 2026 NebulaX. All rights reserved.</span>
+      <span>Power Your Game.</span>
+    </div>
+  </footer>
+
+  <noscript>
+    <style>
+      #nx-loader { display: none !important; }
+      [data-intro], [data-reveal] { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

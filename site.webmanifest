@@ -1,0 +1,12 @@
+{
+  "name": "NebulaX — Power Your Game.",
+  "short_name": "NebulaX",
+  "description": "Premium gaming tools for Android, PC & iPhone.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050310",
+  "theme_color": "#050310",
+  "icons": [
+    { "src": "/assets/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

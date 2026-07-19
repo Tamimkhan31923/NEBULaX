@@ -1,0 +1,219 @@
+/**
+ * COMPONENT: nx-hero
+ * Contains the hero copy block and the 3D "stage" — see
+ * README.md §Hero Section Specification and §3D Illusion Specification
+ * for the full design rationale behind the numbers below.
+ */
+
+.nx-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(6.5rem, 5rem + 6vw, 9rem) var(--nx-space-section-x) var(--nx-space-8);
+  z-index: var(--nx-z-content);
+  overflow: hidden;
+}
+
+.nx-hero__grid {
+  max-width: 1280px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--nx-space-5);
+  align-items: center;
+}
+
+.nx-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nx-space-2);
+  font-family: var(--nx-font-mono);
+  font-size: var(--nx-text-xs);
+  letter-spacing: var(--nx-tracking-wider);
+  color: var(--nx-palette-blue-300);
+  padding: var(--nx-space-2) var(--nx-space-4);
+  border-radius: var(--nx-radius-pill);
+  border: 1px solid var(--nx-color-border);
+  background: var(--nx-color-surface);
+  margin-bottom: var(--nx-space-6);
+}
+
+.nx-hero__eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nx-color-accent-secondary);
+  box-shadow: 0 0 8px var(--nx-color-accent-secondary);
+  animation: nx-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes nx-pulse { 50% { opacity: 0.3; } }
+
+.nx-hero__title {
+  font-weight: 700;
+  font-size: var(--nx-text-3xl);
+  line-height: var(--nx-leading-tight);
+  letter-spacing: var(--nx-tracking-tight);
+  background: var(--nx-gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nx-hero__title-line { display: block; overflow: hidden; }
+
+.nx-hero__sub {
+  margin-top: var(--nx-space-6);
+  max-width: 460px;
+  font-size: var(--nx-text-lg);
+  color: var(--nx-color-text-muted);
+}
+
+.nx-hero__ctas {
+  margin-top: var(--nx-space-8);
+  display: flex;
+  gap: var(--nx-space-4);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nx-hero__stats {
+  margin-top: var(--nx-space-9);
+  display: flex;
+  gap: var(--nx-space-7);
+}
+
+.nx-hero__stat-value {
+  display: block;
+  font-family: var(--nx-font-display);
+  font-size: var(--nx-text-xl);
+  background: linear-gradient(120deg, #fff, var(--nx-palette-blue-300));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nx-hero__stat-label {
+  font-size: var(--nx-text-xs);
+  color: var(--nx-color-text-muted);
+  letter-spacing: var(--nx-tracking-wide);
+}
+
+/* Reveal-on-load choreography: each direct child is staggered via
+   inline custom property --d (delay) set in the HTML, so the timing
+   table lives next to the markup it animates, not buried in CSS. */
+.nx-hero [data-intro] {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: nx-fade-up var(--nx-duration-cinematic) var(--nx-ease-out) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes nx-fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- STAGE: the 3D product showcase ---------- */
+
+.nx-stage {
+  position: relative;
+  height: 560px;
+  perspective: 1400px;
+}
+
+.nx-stage__orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 35% 30%, rgba(181, 101, 255, 0.55), rgba(56, 189, 248, 0.12) 45%, transparent 70%);
+  filter: blur(10px);
+  animation: nx-orb-pulse 6s ease-in-out infinite;
+}
+
+@keyframes nx-orb-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
+}
+
+.nx-product-card {
+  position: absolute;
+  width: 230px;
+  padding: var(--nx-space-5);
+  border-radius: var(--nx-radius-lg);
+  background: linear-gradient(160deg, rgba(60, 35, 110, 0.55), rgba(20, 10, 40, 0.4));
+  border: 1px solid rgba(181, 101, 255, 0.35);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--nx-shadow-elevate), var(--nx-shadow-inset-hi);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 150ms ease-out;
+}
+
+.nx-product-card__glyph {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--nx-radius-md);
+  margin-bottom: var(--nx-space-4);
+  background: linear-gradient(135deg, var(--nx-color-accent-tertiary), var(--nx-color-accent-secondary));
+  box-shadow: 0 0 22px rgba(139, 92, 246, 0.5);
+}
+
+.nx-product-card__title { font-size: var(--nx-text-md); margin-bottom: var(--nx-space-1); }
+.nx-product-card__desc { font-size: var(--nx-text-xs); color: var(--nx-color-text-muted); }
+
+.nx-product-card--a { top: 6%; left: 4%; animation: nx-float-a 7s ease-in-out infinite; }
+.nx-product-card--b { top: 38%; right: 0; animation: nx-float-b 8s ease-in-out infinite; }
+.nx-product-card--c { bottom: 2%; left: 14%; animation: nx-float-c 9s ease-in-out infinite; }
+
+@keyframes nx-float-a { 0%, 100% { translate: 0 0; rotate: -3deg; } 50% { translate: 0 -18px; rotate: -1deg; } }
+@keyframes nx-float-b { 0%, 100% { translate: 0 0; rotate: 2deg; } 50% { translate: 0 -22px; rotate: 4deg; } }
+@keyframes nx-float-c { 0%, 100% { translate: 0 0; rotate: -2deg; } 50% { translate: 0 -14px; rotate: 0deg; } }
+
+.nx-scroll-cue {
+  position: absolute;
+  bottom: var(--nx-space-7);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nx-space-2);
+  font-family: var(--nx-font-mono);
+  font-size: 10px;
+  letter-spacing: var(--nx-tracking-wider);
+  color: var(--nx-color-text-muted);
+}
+
+.nx-scroll-cue__stick {
+  width: 1px;
+  height: 34px;
+  background: linear-gradient(var(--nx-color-accent-tertiary), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.nx-scroll-cue__stick::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--nx-color-accent-secondary), transparent);
+  animation: nx-cue 1.8s ease-in-out infinite;
+}
+
+@keyframes nx-cue { to { top: 100%; } }
+
+@media (max-width: 980px) {
+  .nx-hero__grid { grid-template-columns: 1fr; text-align: center; }
+  .nx-hero__sub { margin-inline: auto; }
+  .nx-hero__ctas, .nx-hero__stats { justify-content: center; }
+  .nx-stage { height: 420px; margin-top: var(--nx-space-5); }
+}

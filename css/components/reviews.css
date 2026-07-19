@@ -1,0 +1,63 @@
+/**
+ * COMPONENT: nx-bubble-field / nx-bubble
+ * Layout (position, drift path) is computed by ReviewField.js and written
+ * as inline custom properties (--top, --left, --dx, --dy, --dur, --delay);
+ * this file only defines what those properties animate.
+ */
+
+.nx-bubble-field {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  height: 560px;
+}
+
+.nx-bubble {
+  position: absolute;
+  top: var(--top, 0);
+  left: var(--left, 0);
+  width: 250px;
+  padding: var(--nx-space-5);
+  border-radius: var(--nx-radius-lg);
+  background: rgba(35, 20, 65, 0.4);
+  border: 1px solid var(--nx-color-border);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--nx-shadow-elevate);
+  animation: nx-drift var(--dur, 8s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes nx-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(var(--dx, 10px), var(--dy, -14px)); }
+}
+
+.nx-bubble__stars {
+  color: var(--nx-palette-blue-300);
+  font-size: var(--nx-text-xs);
+  margin-bottom: var(--nx-space-3);
+  letter-spacing: 2px;
+}
+
+.nx-bubble__who {
+  display: flex;
+  align-items: center;
+  gap: var(--nx-space-3);
+  margin-bottom: var(--nx-space-4);
+}
+
+.nx-bubble__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--nx-color-accent-tertiary), var(--nx-color-accent-secondary));
+  flex-shrink: 0;
+}
+
+.nx-bubble__name { font-size: var(--nx-text-sm); font-weight: 600; }
+.nx-bubble__role { font-size: var(--nx-text-xs); color: var(--nx-color-text-muted); }
+.nx-bubble__quote { font-size: var(--nx-text-sm); color: var(--nx-color-text-muted); }
+
+@media (max-width: 980px) {
+  .nx-bubble-field { height: auto; display: flex; flex-direction: column; gap: var(--nx-space-5); }
+  .nx-bubble { position: static; width: 100%; animation: none; }
+}

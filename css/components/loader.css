@@ -1,0 +1,90 @@
+/**
+ * COMPONENT: nx-loader
+ * BEM: block = nx-loader, elements = __core/__ring/__mark/__bar/__pct
+ * Modifier: nx-loader--hidden (applied by js/modules/Loader.js on completion)
+ */
+
+.nx-loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nx-z-loader);
+  background: radial-gradient(ellipse at center, var(--nx-palette-purple-700) 0%, var(--nx-palette-void-950) 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity var(--nx-duration-cinematic) var(--nx-ease-out),
+              visibility var(--nx-duration-cinematic) var(--nx-ease-out);
+}
+
+.nx-loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.nx-loader__core {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nx-loader__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: var(--nx-color-accent-tertiary);
+  border-right-color: rgba(181, 101, 255, 0.3);
+  animation: nx-spin 2.4s linear infinite;
+}
+
+.nx-loader__ring--outer { width: 160px; height: 160px; }
+.nx-loader__ring--mid {
+  width: 120px; height: 120px;
+  border-top-color: var(--nx-color-accent-secondary);
+  animation-duration: 1.7s;
+  animation-direction: reverse;
+}
+.nx-loader__ring--inner {
+  width: 84px; height: 84px;
+  border-top-color: #fff;
+  animation-duration: 1.1s;
+}
+
+@keyframes nx-spin { to { transform: rotate(360deg); } }
+
+.nx-loader__mark {
+  font-family: var(--nx-font-display);
+  font-weight: 700;
+  font-size: var(--nx-text-sm);
+  letter-spacing: var(--nx-tracking-wider);
+  color: #fff;
+}
+
+.nx-loader__bar {
+  margin-top: var(--nx-space-7);
+  width: 220px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.nx-loader__bar-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--nx-gradient-brand);
+  box-shadow: var(--nx-shadow-glow-sm);
+}
+
+.nx-loader__pct {
+  margin-top: var(--nx-space-3);
+  font-family: var(--nx-font-mono);
+  font-size: var(--nx-text-xs);
+  letter-spacing: var(--nx-tracking-wide);
+  color: var(--nx-color-text-muted);
+}

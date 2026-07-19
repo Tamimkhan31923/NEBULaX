@@ -1,0 +1,120 @@
+/**
+ * COMPONENT: nx-section-head, nx-feature-card
+ * [data-tilt] and [data-reveal] are behavior hooks for TiltCard.js and
+ * ScrollReveal.js respectively — see README §Component System for the
+ * rule on separating style classes from behavior attributes.
+ */
+
+.nx-section {
+  position: relative;
+  z-index: var(--nx-z-content);
+  padding: var(--nx-space-section-y) var(--nx-space-section-x);
+}
+
+.nx-section-head {
+  max-width: 640px;
+  margin: 0 auto var(--nx-space-9);
+  text-align: center;
+}
+
+.nx-section-head__tag {
+  font-family: var(--nx-font-mono);
+  font-size: var(--nx-text-xs);
+  letter-spacing: var(--nx-tracking-wider);
+  color: var(--nx-palette-blue-300);
+  display: inline-block;
+  margin-bottom: var(--nx-space-4);
+}
+
+.nx-section-head__title {
+  font-weight: 700;
+  font-size: var(--nx-text-2xl);
+  letter-spacing: -0.01em;
+  background: linear-gradient(180deg, #fff, #c9b6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nx-section-head__desc {
+  margin-top: var(--nx-space-4);
+  color: var(--nx-color-text-muted);
+  font-size: var(--nx-text-md);
+}
+
+/* Generic scroll-reveal primitive. ScrollReveal.js toggles --in via a
+   single IntersectionObserver instance shared across every match —
+   see js/modules/ScrollReveal.js for why one observer beats one-per-el. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(50px) scale(0.98);
+  transition: opacity var(--nx-duration-cinematic) var(--nx-ease-out),
+              transform var(--nx-duration-cinematic) var(--nx-ease-out);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.nx-feature-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--nx-space-5);
+}
+
+.nx-feature-card {
+  position: relative;
+  padding: var(--nx-space-8) var(--nx-space-7);
+  border-radius: var(--nx-radius-lg);
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(50, 28, 95, 0.4), rgba(15, 8, 30, 0.5));
+  border: 1px solid var(--nx-color-border);
+  transition: transform var(--nx-duration-slow) var(--nx-ease-out),
+              border-color var(--nx-duration-slow);
+}
+
+/* Cursor-tracked spotlight: --mx/--my are written by TiltCard.js on
+   pointermove and read here — CSS owns the paint, JS owns the coordinates. */
+.nx-feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(181, 101, 255, 0.25), transparent 60%);
+  transition: opacity var(--nx-duration-slow);
+  pointer-events: none;
+}
+
+.nx-feature-card:hover::before,
+.nx-feature-card:focus-within::before {
+  opacity: 1;
+}
+
+.nx-feature-card:hover,
+.nx-feature-card:focus-within {
+  border-color: var(--nx-color-border-hover);
+}
+
+.nx-feature-card__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--nx-radius-md);
+  margin-bottom: var(--nx-space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--nx-text-xl);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(56, 189, 248, 0.2));
+  border: 1px solid var(--nx-color-border);
+}
+
+.nx-feature-card__title { font-size: var(--nx-text-lg); margin-bottom: var(--nx-space-3); }
+.nx-feature-card__desc { font-size: var(--nx-text-base); color: var(--nx-color-text-muted); }
+
+@media (max-width: 980px) {
+  .nx-feature-grid { grid-template-columns: 1fr; }
+}

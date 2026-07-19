@@ -1,0 +1,55 @@
+/**
+ * COMPONENT: nx-btn
+ * BEM: nx-btn (block) with variant modifiers nx-btn--primary / nx-btn--ghost
+ * Behavior hook: [data-magnetic] is a pure JS attribute hook (see
+ * js/modules/MagneticButton.js) — it carries no styling of its own.
+ * Separating "what it looks like" (class) from "what it does" (data attr)
+ * keeps CSS and JS from fighting over the same selector.
+ */
+
+.nx-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nx-space-2);
+  padding: var(--nx-space-4) var(--nx-space-7);
+  border-radius: var(--nx-radius-pill);
+  font-weight: 600;
+  font-size: var(--nx-text-sm);
+  transition: transform var(--nx-duration-base) var(--nx-ease-out),
+              box-shadow var(--nx-duration-base) var(--nx-ease-out),
+              background var(--nx-duration-base) var(--nx-ease-out),
+              border-color var(--nx-duration-base) var(--nx-ease-out);
+}
+
+.nx-btn--primary {
+  color: #fff;
+  background: var(--nx-gradient-brand);
+  box-shadow: var(--nx-shadow-glow-md), var(--nx-shadow-inset-hi);
+}
+
+.nx-btn--primary:hover,
+.nx-btn--primary:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(124, 58, 237, 0.6), var(--nx-shadow-inset-hi);
+}
+
+.nx-btn--ghost {
+  color: var(--nx-color-text);
+  background: var(--nx-color-surface);
+  border: 1px solid var(--nx-color-border);
+  backdrop-filter: blur(10px);
+}
+
+.nx-btn--ghost:hover,
+.nx-btn--ghost:focus-visible {
+  border-color: var(--nx-color-accent-tertiary);
+  background: rgba(124, 58, 237, 0.15);
+}
+
+.nx-btn--nav {
+  font-size: var(--nx-text-xs);
+  padding: var(--nx-space-3) var(--nx-space-6);
+  color: #fff;
+  background: var(--nx-gradient-brand);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}

@@ -1,0 +1,150 @@
+/**
+ * NEBULAX — BASE LAYER
+ * -----------------------------------------------------------------------
+ * Reset + element-level defaults. Nothing here is a component or a
+ * utility — this layer only makes raw HTML elements behave predictably
+ * before any class is applied. Keep it boring on purpose.
+ * ----------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--nx-color-bg);
+  color: var(--nx-color-text);
+  font-family: var(--nx-font-body);
+  font-size: var(--nx-text-base);
+  line-height: var(--nx-leading-normal);
+  min-height: 100svh;
+  overflow-x: hidden;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--nx-font-display);
+  line-height: var(--nx-leading-snug);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ---------- ACCESSIBILITY PRIMITIVES ---------- */
+
+/* Visually hidden but available to assistive tech (skip link target labels,
+   supplemental context for icon-only controls). */
+.u-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip-to-content link: hidden until focused, then docked top-left.
+   Required for WCAG 2.2 SC 2.4.1 (Bypass Blocks). */
+.nx-skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--nx-space-4);
+  z-index: var(--nx-z-loader);
+  padding: var(--nx-space-3) var(--nx-space-5);
+  background: var(--nx-color-accent-primary);
+  color: #fff;
+  border-radius: var(--nx-radius-sm);
+  font-weight: 600;
+  transition: top var(--nx-duration-base) var(--nx-ease-out);
+}
+
+.nx-skip-link:focus-visible {
+  top: var(--nx-space-4);
+}
+
+/* Consistent, visible focus ring everywhere — WCAG 2.2 SC 2.4.11/2.4.13.
+   Never remove :focus-visible outlines without supplying a replacement. */
+:focus-visible {
+  outline: 2px solid var(--nx-color-focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--nx-radius-sm);
+}
+
+/* Respect the user's OS-level motion preference — WCAG 2.2 SC 2.3.3.
+   Every keyframe/transition in the component layer is neutralized here
+   rather than re-implemented per component. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection + scrollbar theming (cosmetic, safe to override) */
+::selection {
+  background: var(--nx-color-accent-primary);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nx-color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--nx-color-accent-primary), var(--nx-color-accent-secondary));
+  border-radius: 4px;
+}

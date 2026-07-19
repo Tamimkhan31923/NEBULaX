@@ -1,0 +1,119 @@
+/**
+ * NEBULAX — DESIGN TOKENS
+ * -----------------------------------------------------------------------
+ * Single source of truth for every visual constant in the system.
+ * No component file should hard-code a color, size, or timing value —
+ * everything traces back to a token here. This is what makes a global
+ * re-theme (e.g. a light mode, a seasonal palette) a one-file change.
+ *
+ * Naming convention: --nx-<category>-<name>-<step>
+ *   nx        = project namespace, prevents collisions if embedded
+ *   category  = color | space | font | radius | shadow | z | motion
+ *   step      = numeric scale (100 = lightest/smallest ... 900 = heaviest)
+ * ----------------------------------------------------------------------- */
+
+:root {
+  /* ---------- COLOR — base palette (raw hues, never used directly) ---------- */
+  --nx-palette-void-950: #050310;
+  --nx-palette-void-900: #0a0620;
+  --nx-palette-purple-800: #120a2e;
+  --nx-palette-purple-700: #1a0f3d;
+  --nx-palette-violet-600: #7c3aed;
+  --nx-palette-violet-500: #9333ea;
+  --nx-palette-violet-400: #b565ff;
+  --nx-palette-blue-500: #38bdf8;
+  --nx-palette-blue-300: #7dd3fc;
+  --nx-palette-white-100: #f6f3ff;
+
+  /* ---------- COLOR — semantic tokens (what components consume) ---------- */
+  --nx-color-bg: var(--nx-palette-void-950);
+  --nx-color-surface: rgba(30, 18, 60, 0.35);
+  --nx-color-surface-hi: rgba(60, 35, 110, 0.45);
+  --nx-color-border: rgba(180, 150, 255, 0.14);
+  --nx-color-border-hover: rgba(181, 101, 255, 0.5);
+  --nx-color-text: var(--nx-palette-white-100);
+  --nx-color-text-muted: rgba(246, 243, 255, 0.62);
+  --nx-color-accent-primary: var(--nx-palette-violet-600);
+  --nx-color-accent-secondary: var(--nx-palette-blue-500);
+  --nx-color-accent-tertiary: var(--nx-palette-violet-400);
+  --nx-color-focus-ring: var(--nx-palette-blue-300);
+
+  --nx-gradient-brand: linear-gradient(120deg, var(--nx-color-accent-primary), var(--nx-color-accent-tertiary) 50%, var(--nx-color-accent-secondary));
+  --nx-gradient-text: linear-gradient(180deg, #fff 20%, #cfc0ff 65%, #9d7bff 100%);
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --nx-font-display: 'Space Grotesk', system-ui, sans-serif;
+  --nx-font-body: 'Inter', system-ui, sans-serif;
+  --nx-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Fluid type scale — clamp(min, preferred-vw, max). Mobile-first floor,
+     desktop ceiling, viewport-relative in between. See README §Typography. */
+  --nx-text-xs: clamp(0.69rem, 0.66rem + 0.15vw, 0.75rem);
+  --nx-text-sm: clamp(0.8rem, 0.77rem + 0.15vw, 0.875rem);
+  --nx-text-base: clamp(0.95rem, 0.92rem + 0.2vw, 1rem);
+  --nx-text-md: clamp(1rem, 0.96rem + 0.3vw, 1.15rem);
+  --nx-text-lg: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --nx-text-xl: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --nx-text-2xl: clamp(1.9rem, 1.5rem + 2vw, 3rem);
+  --nx-text-3xl: clamp(2.6rem, 1.8rem + 4vw, 5.2rem);
+
+  --nx-leading-tight: 0.98;
+  --nx-leading-snug: 1.1;
+  --nx-leading-normal: 1.6;
+  --nx-tracking-tight: -0.02em;
+  --nx-tracking-wide: 0.05em;
+  --nx-tracking-wider: 0.2em;
+
+  /* ---------- SPACE — 4px base grid ---------- */
+  --nx-space-1: 0.25rem;
+  --nx-space-2: 0.5rem;
+  --nx-space-3: 0.75rem;
+  --nx-space-4: 1rem;
+  --nx-space-5: 1.5rem;
+  --nx-space-6: 2rem;
+  --nx-space-7: 2.75rem;
+  --nx-space-8: 3.5rem;
+  --nx-space-9: 5rem;
+  --nx-space-10: 7.5rem;
+
+  /* Fluid section padding: shrinks gracefully on small viewports */
+  --nx-space-section-y: clamp(4.5rem, 3rem + 6vw, 9.5rem);
+  --nx-space-section-x: clamp(1rem, 0.5rem + 2vw, 1.5rem);
+
+  /* ---------- RADIUS ---------- */
+  --nx-radius-sm: 8px;
+  --nx-radius-md: 14px;
+  --nx-radius-lg: 20px;
+  --nx-radius-xl: 26px;
+  --nx-radius-pill: 100px;
+
+  /* ---------- SHADOW / ELEVATION ---------- */
+  --nx-shadow-glow-sm: 0 0 12px rgba(181, 101, 255, 0.6);
+  --nx-shadow-glow-md: 0 8px 30px rgba(124, 58, 237, 0.45);
+  --nx-shadow-elevate: 0 20px 60px rgba(10, 0, 30, 0.5);
+  --nx-shadow-inset-hi: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  /* ---------- MOTION ---------- */
+  --nx-ease-out: cubic-bezier(0.16, 0.8, 0.24, 1);
+  --nx-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --nx-duration-fast: 200ms;
+  --nx-duration-base: 350ms;
+  --nx-duration-slow: 600ms;
+  --nx-duration-cinematic: 1000ms;
+
+  /* ---------- Z-INDEX SCALE — named, never magic numbers in components ---------- */
+  --nx-z-base: 1;
+  --nx-z-backdrop: 0;
+  --nx-z-content: 2;
+  --nx-z-header: 300;
+  --nx-z-overlay: 900;
+  --nx-z-loader: 1000;
+
+  /* ---------- BREAKPOINT REFERENCE (documentation only — see README) ----------
+     CSS custom properties cannot parameterize @media queries, so these are
+     mirrored as constants in js/config.js for any JS that needs the same
+     values (e.g. disabling the particle system below --nx-bp-md). */
+  --nx-bp-sm: 640px;
+  --nx-bp-md: 980px;
+  --nx-bp-lg: 1280px;
+}
